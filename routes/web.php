@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\Backend\ServiceTypeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,5 +48,33 @@ Route::middleware(['auth','role:agent'])->group(function (){
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 
+Route::middleware(['auth','role:admin'])->group(function (){
 
+    // Service Type All route controller
+   Route::controller(ServiceTypeController::class)->group(function (){
+       Route::get('/all/service-type','AllServiceType')->name('all.service-type');
+       Route::get('/add/service-type', 'AddServiceType')->name('add.service-type');
+       Route::post('/store/service-type', 'StoreServiceType')->name('store.service-type');
+       Route::get('/edit/service-type/{id}', 'EditServiceType')->name('edit.service-type');
+       Route::post('/update/service-type', 'UpdateServiceType')->name('update.service-type');
+       Route::get('/delete/service-type/{id}', 'DeleteServiceType')->name('delete.service-type');
+   }) ;
+
+    // Clients route controller
+    Route::controller(ServiceTypeController::class)->group(function (){
+        Route::get('/all/clients','AllClients')->name('all.clients');
+        Route::get('/add/clients','AddClients')->name('add.clients');
+        Route::post('/store/clients', 'StoreClients')->name('store.clients');
+        Route::get('/edit/clients/{id}', 'EditClients')->name('edit.clients');
+        Route::post('/update/clients', 'UpdateClients')->name('update.clients');
+        Route::get('/delete/clients/{id}', 'DeleteClients')->name('delete.clients');
+    });
+
+    // Projects route controller
+    Route::controller(ServiceTypeController::class)->group(function (){
+        Route::get('/all/projects','AllProjects')->name('all.projects');
+        Route::get('/add/projects','AddProjects')->name('add.projects');
+        Route::post('/store/projects', 'StoreProjects')->name('store.projects');
+    });
+});
 
