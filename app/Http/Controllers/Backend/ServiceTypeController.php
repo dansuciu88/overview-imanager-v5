@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\Invoice;
+use App\Models\Milestone;
 use App\Models\Project;
 use App\Models\ServiceType;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class ServiceTypeController extends Controller
@@ -176,8 +179,90 @@ class ServiceTypeController extends Controller
 
     public function AllInvoices()
     {
-        $invoices = Project::latest()->get();
+        $invoices = Invoice::latest()->get();
         return view('admin.invoice.all_invoices',compact('invoices'));
+    } // End Method
+
+    public function AddInvoices()
+    {
+        return view('admin.invoice.add_invoices');
+    } // End Method
+
+    public function StoreInvoices(Request $request)
+    {
+        //validation
+        $request->validate([
+            'invoice_number' => 'required|unique:invoices|max:20', // required and unique in clients table from DB, max 200 char
+            'invoice_series' => 'required',
+            'invoice_amount' => 'required',
+            'invoice_issue_date' => 'required',
+            'invoice_due_date' => 'required',
+            'invoice_status' => 'required',
+            'invoice_client' => 'required',
+        ]);
+
+        Invoice::insert([
+            'invoice_number' => $request->invoice_number,
+            'invoice_series' => $request->invoice_series,
+            'invoice_amount' => $request->invoice_amount,
+            'invoice_issue_date' => $request->invoice_issue_date,
+            'invoice_due_date' => $request->invoice_due_date,
+            'invoice_status' => $request->invoice_status,
+            'invoice_client' => $request->invoice_client,
+        ]);
+
+        $notification = array(
+            'message' => 'Invoice Created Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.invoices')->with($notification);
+
+    } // End Method
+
+    public function ViewInvoices($id)
+    {
+        $invoices = Invoice::findOrFail($id);
+        $pdf = Pdf::loadView('admin.invoice.pdf_invoice', compact('invoices'));
+
+        return $pdf->stream();
+    } // End Method
+
+    // MILESTONES CONTROLLER METHODS
+
+    public function AllMilestones()
+    {
+        $milestones = Milestone::latest()->get();
+        return view('admin.milestones.all_milestones',compact('milestones'));
+    } // End Method
+
+    public function AddMilestones()
+    {
+        return view('admin.milestones.add_milestones');
+    } // End Method
+
+    public function StoreMilestones(Request $request)
+    {
+        //validation
+        $request->validate([
+            'milestone_name' => 'required', // required and unique in clients table from DB, max 200 char
+            'milestone_projectId' => 'required',
+            'milestone_start' => 'required',
+            'milestone_end' => 'required',
+        ]);
+
+        Milestone::insert([
+            'milestone_name' => $request->milestone_name,
+            'milestone_projectId' => $request->milestone_projectId,
+            'milestone_start' => $request->milestone_start,
+            'milestone_end' => $request->milestone_end,
+        ]);
+
+        $notification = array(
+            'message' => 'Milestone Created Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.milestones')->with($notification);
+
     } // End Method
 
 }

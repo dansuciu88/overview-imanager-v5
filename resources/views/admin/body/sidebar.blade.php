@@ -92,10 +92,10 @@
                 <div class="collapse" id="milestones">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">All Milestones</a>
+                            <a href="{{ route('all.milestones') }}" class="nav-link">All Milestones</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Add Milestone</a>
+                            <a href="{{ route('add.milestones') }}" class="nav-link">Add Milestone</a>
                         </li>
                     </ul>
                 </div>

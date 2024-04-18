@@ -74,7 +74,6 @@ Route::middleware(['auth','role:admin'])->group(function (){
     Route::controller(ServiceTypeController::class)->group(function (){
         Route::get('/all/projects','AllProjects')->name('all.projects');
         Route::get('/add/projects','AddProjects')->name('add.projects');
-
         Route::post('/store/projects', 'StoreProjects')->name('store.projects');
     });
 
@@ -83,6 +82,14 @@ Route::middleware(['auth','role:admin'])->group(function (){
         Route::get('/all/invoices','AllInvoices')->name('all.invoices');
         Route::get('/add/invoices','AddInvoices')->name('add.invoices');
         Route::post('/store/invoices', 'StoreInvoices')->name('store.invoices');
+        Route::get('/view/invoices/{id}','ViewInvoices')->name('view.invoices');
+    });
+
+    // Milestones route controller
+    Route::controller(ServiceTypeController::class)->group(function (){
+        Route::get('/all/milestones','AllMilestones')->name('all.milestones');
+        Route::get('/add/milestones','AddMilestones')->name('add.milestones');
+        Route::post('/store/milestones', 'StoreMilestones')->name('store.milestones');
     });
 });
 
