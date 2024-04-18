@@ -172,4 +172,12 @@ class ServiceTypeController extends Controller
 
     } // End Method
 
+    // INVOICES CONTROLLER METHODS
+
+    public function AllInvoices()
+    {
+        $invoices = Project::latest()->get();
+        return view('admin.invoice.all_invoices',compact('invoices'));
+    } // End Method
+
 }

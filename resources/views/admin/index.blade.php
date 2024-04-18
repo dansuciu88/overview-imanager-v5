@@ -141,6 +141,19 @@
                 <div class="card overflow-hidden">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
+                            <h6 class="card-title mb-0">Gantt chart</h6>
+                            @yield('gantt')
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- row -->
+
+        <div class="row">
+            <div class="col-12 col-xl-12 grid-margin stretch-card">
+                <div class="card overflow-hidden">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
                             <h6 class="card-title mb-0">Revenue</h6>
                             <div class="dropdown">
                                 <a type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

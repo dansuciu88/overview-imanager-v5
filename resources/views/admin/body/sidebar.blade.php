@@ -65,15 +65,15 @@
                             <a href="{{ route('all.projects') }}" class="nav-link">All Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('add.clients') }}" class="nav-link">Add Project</a>
+                            <a href="{{ route('add.projects') }}" class="nav-link">Add Projects</a>
                         </li>
                     </ul>
                 </div>
             </li>
             <li class="nav-item">
                 <a href="pages/apps/chat.html" class="nav-link">
-                    <i class="link-icon" data-feather="message-square"></i>
-                    <span class="link-title">Chat</span>
+                    <i class="link-icon" data-feather="pie-chart"></i>
+                    <span class="link-title">Gantt</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -82,40 +82,72 @@
                     <span class="link-title">Calendar</span>
                 </a>
             </li>
-            <li class="nav-item nav-category">Components</li>
+            <li class="nav-item nav-category">Invoice</li>
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
-                    <i class="link-icon" data-feather="feather"></i>
-                    <span class="link-title">UI Kit</span>
+                <a class="nav-link" data-bs-toggle="collapse" href="#milestones" role="button" aria-expanded="false" aria-controls="emails">
+                    <i class="link-icon" data-feather="map"></i>
+                    <span class="link-title">Milestones</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse" id="uiComponents">
+                <div class="collapse" id="milestones">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="pages/ui-components/accordion.html" class="nav-link">Accordion</a>
+                            <a href="#" class="nav-link">All Milestones</a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/ui-components/alerts.html" class="nav-link">Alerts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/ui-components/badges.html" class="nav-link">Badges</a>
+                            <a href="#" class="nav-link">Add Milestone</a>
                         </li>
                     </ul>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#advancedUI" role="button" aria-expanded="false" aria-controls="advancedUI">
-                    <i class="link-icon" data-feather="anchor"></i>
-                    <span class="link-title">Advanced UI</span>
+                <a class="nav-link" data-bs-toggle="collapse" href="#invoice" role="button" aria-expanded="false" aria-controls="emails">
+                    <i class="link-icon" data-feather="dollar-sign"></i>
+                    <span class="link-title">Invoice</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse" id="advancedUI">
+                <div class="collapse" id="invoice">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="pages/advanced-ui/cropper.html" class="nav-link">Cropper</a>
+                            <a href="{{ route('all.invoices') }}" class="nav-link">All Invoices</a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/advanced-ui/owl-carousel.html" class="nav-link">Owl carousel</a>
+                            <a href="{{ route('add.invoices') }}" class="nav-link">Add Invoice</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item nav-category">Documents</li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#contracts" role="button" aria-expanded="false" aria-controls="uiComponents">
+                    <i class="link-icon" data-feather="file"></i>
+                    <span class="link-title">Contracts</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="contracts">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">All Contracts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Add Contracts</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#documents" role="button" aria-expanded="false" aria-controls="advancedUI">
+                    <i class="link-icon" data-feather="clipboard"></i>
+                    <span class="link-title">Documents</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="documents">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">All Reports</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Add Report</a>
                         </li>
                     </ul>
                 </div>

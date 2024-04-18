@@ -92,7 +92,7 @@
                                             <div class="col-sm-4">
                                                 <div class="mb-3">
                                                     <label for="exampleInputEmail1" class="form-label">Start Date </label>
-                                                    <input type="text" name="start_date" class="form-control @error('start_date') is-invalid @enderror">
+                                                    <input type="date" name="start_date" class="form-control @error('start_date') is-invalid @enderror">
                                                     @error('start_date')
                                                     <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -101,7 +101,7 @@
                                             <div class="col-sm-4">
                                                 <div class="mb-3">
                                                     <label for="exampleInputEmail1" class="form-label">End Date </label>
-                                                    <input type="text" name="end_date" class="form-control @error('end_date') is-invalid @enderror">
+                                                    <input type="date" name="end_date" class="form-control @error('end_date') is-invalid @enderror">
                                                     @error('end_date')
                                                     <span class="text-danger">{{ $message }}</span>
                                                     @enderror

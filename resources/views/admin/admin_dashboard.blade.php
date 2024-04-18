@@ -38,6 +38,11 @@
 
     <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.png') }}" />
 
+    <!-- FRAPPE-GANNT files styles -->
+    <script src="{{ asset('backend/assets/frappe-gantt/dist/frappe-gantt.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('backend/assets/frappe-gantt/dist/frappe-gantt.css') }}">
+    <!-- END FRAPPE-GANNT files styles -->
+
     <!-- TOASTR styles -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
     <!-- END TOASTR styles -->
@@ -54,7 +59,6 @@
         <!-- partial:partials/_navbar.html -->
         @include('admin.body.header')
         <!-- partial -->
-
         @yield('admin')
 
         <!-- partial:partials/_footer.html -->
