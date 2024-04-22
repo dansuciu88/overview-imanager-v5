@@ -38,8 +38,8 @@
                                         <td>{{ $item->project_budget }}</td>
                                         <td>{{ $item->project_client }}</td>
                                         <td>
-                                            <a href="{{ route('edit.service-type', $item->id) }}" class="btn btn-inverse-warning"> Edit </a>
-                                            <a href="{{ route('delete.service-type', $item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete </a>
+                                            <a href="{{ route('edit.projects', $item->id) }}" class="btn btn-inverse-warning"> Edit </a>
+                                            <a href="{{ route('delete.projects', $item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete </a>
                                         </td>
                                     </tr>
                                     @endforeach

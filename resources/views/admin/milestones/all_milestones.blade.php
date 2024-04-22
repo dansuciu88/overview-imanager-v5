@@ -34,8 +34,8 @@
                                         <td>{{ $item->milestone_end }}</td>
                                         <td>{{ $item->milestone_projectId }}</td>
                                         <td>
-                                            <a href="{{ route('edit.service-type', $item->id) }}" class="btn btn-inverse-warning"> Edit </a>
-                                            <a href="{{ route('delete.service-type', $item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete </a>
+                                            <a href="{{ route('edit.milestones', $item->id) }}" class="btn btn-inverse-warning"> Edit </a>
+                                            <a href="{{ route('delete.milestones', $item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete </a>
                                         </td>
                                     </tr>
                                     @endforeach

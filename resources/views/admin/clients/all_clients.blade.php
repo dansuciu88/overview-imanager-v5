@@ -35,8 +35,8 @@
                                         <td>{{ $item->client_address }}</td>
                                         <td>{{ $item->client_pj_name }}</td>
                                         <td>
-                                            <a href="{{ route('edit.service-type', $item->id) }}" class="btn btn-inverse-warning"> Edit </a>
-                                            <a href="{{ route('delete.service-type', $item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete </a>
+                                            <a href="{{ route('edit.clients', $item->id) }}" class="btn btn-inverse-warning"> Edit </a>
+                                            <a href="{{ route('delete.clients', $item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete </a>
                                         </td>
                                     </tr>
                                     @endforeach

@@ -73,7 +73,7 @@ class ServiceTypeController extends Controller
         ServiceType::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => 'Property Type Deleted Successfully',
+            'message' => 'Service Type Deleted Successfully',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
@@ -127,6 +127,47 @@ class ServiceTypeController extends Controller
 
     } // End Method
 
+    public function EditClients($id)
+    {
+        $clients = Client::findOrFail($id);
+        return view('admin.clients.edit_clients', compact('clients'));
+    } // End Method
+
+    public function UpdateClients(Request $request)
+    {
+        $clientId = $request->id;
+
+        Client::findOrFail($clientId)->update([
+            'client_name' => $request->client_name,
+            'client_telephone' => $request->client_telephone,
+            'client_email' => $request->client_email,
+            'client_address' => $request->client_address,
+            'client_pj_name' => $request->client_pj_name,
+            'client_pj_cui' => $request->client_pj_cui,
+            'client_pj_j' => $request->client_pj_j,
+            'client_pj_bank' => $request->client_pj_bank,
+            'client_pj_iban' => $request->client_pj_iban,
+        ]);
+
+        $notification = array(
+            'message' => 'Client Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.clients')->with($notification);
+
+    } // End Method
+
+    public function DeleteClients($id)
+    {
+        Client::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Client Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    } // End Method
+
     // PROJECTS CONTROLLER METHODS
 
     public function AllProjects()
@@ -173,6 +214,47 @@ class ServiceTypeController extends Controller
         );
         return redirect()->route('all.projects')->with($notification);
 
+    } // End Method
+
+    public function EditProjects($id)
+    {
+        $projects = Project::findOrFail($id);
+        return view('admin.projects.edit_projects', compact('projects'));
+    } // End Method
+
+    public function UpdateProjects(Request $request)
+    {
+        $projectId = $request->id;
+
+        Project::findOrFail($projectId)->update([
+            'project_name' => $request->project_name,
+            'project_address' => $request->project_address,
+            'project_description' => $request->project_description,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'project_status' => $request->project_status,
+            'project_number' => $request->project_number,
+            'project_budget' => $request->project_budget,
+            'project_client' => $request->project_client,
+        ]);
+
+        $notification = array(
+            'message' => 'Project Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.projects')->with($notification);
+
+    } // End Method
+
+    public function DeleteProjects($id)
+    {
+        Project::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Project Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     } // End Method
 
     // INVOICES CONTROLLER METHODS
@@ -263,6 +345,42 @@ class ServiceTypeController extends Controller
         );
         return redirect()->route('all.milestones')->with($notification);
 
+    } // End Method
+
+    public function EditMilestones($id)
+    {
+        $milestones = Client::findOrFail($id);
+        return view('admin.milestones.edit_milestones', compact('milestones'));
+    } // End Method
+
+    public function UpdateMilestones(Request $request)
+    {
+        $milestoneId = $request->id;
+
+        Milestone::findOrFail($milestoneId)->update([
+            'milestone_name' => $request->milestone_name,
+            'milestone_projectId' => $request->milestone_projectId,
+            'milestone_start' => $request->milestone_start,
+            'milestone_end' => $request->milestone_end,
+        ]);
+
+        $notification = array(
+            'message' => 'Milestone Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.milestones')->with($notification);
+
+    } // End Method
+
+    public function DeleteMilestones($id)
+    {
+        Milestone::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Milestone Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     } // End Method
 
 }

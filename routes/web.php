@@ -75,6 +75,9 @@ Route::middleware(['auth','role:admin'])->group(function (){
         Route::get('/all/projects','AllProjects')->name('all.projects');
         Route::get('/add/projects','AddProjects')->name('add.projects');
         Route::post('/store/projects', 'StoreProjects')->name('store.projects');
+        Route::get('/edit/projects/{id}', 'EditProjects')->name('edit.projects');
+        Route::post('/update/projects', 'UpdateProjects')->name('update.projects');
+        Route::get('/delete/projects/{id}', 'DeleteProjects')->name('delete.projects');
     });
 
     // Invoices route controller
@@ -90,6 +93,9 @@ Route::middleware(['auth','role:admin'])->group(function (){
         Route::get('/all/milestones','AllMilestones')->name('all.milestones');
         Route::get('/add/milestones','AddMilestones')->name('add.milestones');
         Route::post('/store/milestones', 'StoreMilestones')->name('store.milestones');
+        Route::get('/edit/milestones/{id}', 'EditMilestones')->name('edit.milestones');
+        Route::post('/update/milestones', 'UpdateMilestones')->name('update.milestones');
+        Route::get('/delete/milestones/{id}', 'DeleteMilestones')->name('delete.milestones');
     });
 });
 
