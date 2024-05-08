@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\Contract;
+use App\Models\Document;
 use App\Models\Invoice;
 use App\Models\Milestone;
 use App\Models\Project;
@@ -378,6 +380,154 @@ class ServiceTypeController extends Controller
 
         $notification = array(
             'message' => 'Milestone Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    } // End Method
+
+    // CONTRACTS CONTROLLER METHODS
+
+    public function AllContracts()
+    {
+        $contracts = Contract::latest()->get();
+        return view('admin.contracts.all_contracts',compact('contracts'));
+    } // End Method
+
+    public function AddContracts()
+    {
+        return view('admin.contracts.add_contracts');
+    } // End Method
+
+    public function StoreContracts(Request $request)
+    {
+        //validation
+        $request->validate([
+            'contract_name' => 'required', // required and unique in clients table from DB, max 200 char
+            'contract_projectId' => 'required',
+            'contract_start' => 'required',
+            'contract_end' => 'required',
+        ]);
+
+        Contract::insert([
+            'contract_name' => $request->contract_name,
+            'contract_projectId' => $request->contract_projectId,
+            'contract_start' => $request->contract_start,
+            'contract_end' => $request->contract_end,
+        ]);
+
+        $notification = array(
+            'message' => 'Contract Created Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.contracts')->with($notification);
+
+    } // End Method
+
+    public function EditContracts($id)
+    {
+        $contracts = Contract::findOrFail($id);
+        return view('admin.contracts.edit_contracts', compact('contracts'));
+    } // End Method
+
+    public function UpdateContracts(Request $request)
+    {
+        $contractId = $request->id;
+
+        Contract::findOrFail($contractId)->update([
+            'contract_name' => $request->contract_name,
+            'contract_projectId' => $request->contract_projectId,
+            'contract_start' => $request->contract_start,
+            'contract_end' => $request->contract_end,
+        ]);
+
+        $notification = array(
+            'message' => 'Contract Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.contracts')->with($notification);
+
+    } // End Method
+
+    public function DeleteContracts($id)
+    {
+        Contract::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Contract Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    } // End Method
+
+    // DOCUMENTS CONTROLLER METHODS
+
+    public function AllDocuments()
+    {
+        $documents = Document::latest()->get();
+        return view('admin.documents.all_documents',compact('documents'));
+    } // End Method
+
+    public function AddDocuments()
+    {
+        return view('admin.documents.add_documents');
+    } // End Method
+
+    public function StoreDocuments(Request $request)
+    {
+        //validation
+        $request->validate([
+            'document_name' => 'required', // required and unique in clients table from DB, max 200 char
+            'document_projectId' => 'required',
+            'document_start' => 'required',
+            'document_end' => 'required',
+        ]);
+
+        Document::insert([
+            'document_name' => $request->document_name,
+            'document_projectId' => $request->document_projectId,
+            'document_start' => $request->document_start,
+            'document_end' => $request->document_end,
+        ]);
+
+        $notification = array(
+            'message' => 'Document Created Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.documents')->with($notification);
+
+    } // End Method
+
+    public function EditDocuments($id)
+    {
+        $documents = Document::findOrFail($id);
+        return view('admin.documents.edit_documents', compact('documents'));
+    } // End Method
+
+    public function UpdateDocuments(Request $request)
+    {
+        $documentId = $request->id;
+
+        Contract::findOrFail($documentId)->update([
+            'document_name' => $request->document_name,
+            'document_projectId' => $request->document_projectId,
+            'document_start' => $request->document_start,
+            'document_end' => $request->document_end,
+        ]);
+
+        $notification = array(
+            'message' => 'Document Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.documents')->with($notification);
+
+    } // End Method
+
+    public function DeleteDocuments($id)
+    {
+        Document::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Document Deleted Successfully',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);

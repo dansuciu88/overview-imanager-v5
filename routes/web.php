@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.admin_login');
 });
 
 Route::get('/dashboard', function () {
@@ -96,6 +96,26 @@ Route::middleware(['auth','role:admin'])->group(function (){
         Route::get('/edit/milestones/{id}', 'EditMilestones')->name('edit.milestones');
         Route::post('/update/milestones', 'UpdateMilestones')->name('update.milestones');
         Route::get('/delete/milestones/{id}', 'DeleteMilestones')->name('delete.milestones');
+    });
+
+    // Contracts route controller
+    Route::controller(ServiceTypeController::class)->group(function (){
+        Route::get('/all/contracts','AllContracts')->name('all.contracts');
+        Route::get('/add/contracts','AddContracts')->name('add.contracts');
+        Route::post('/store/contracts', 'StoreContracts')->name('store.contracts');
+        Route::get('/edit/contracts/{id}', 'EditContracts')->name('edit.contracts');
+        Route::post('/update/contracts', 'UpdateContracts')->name('update.contracts');
+        Route::get('/delete/contracts/{id}', 'DeleteContracts')->name('delete.contracts');
+    });
+
+    // Documents route controller
+    Route::controller(ServiceTypeController::class)->group(function (){
+        Route::get('/all/documents','AllDocuments')->name('all.documents');
+        Route::get('/add/documents','AddDocuments')->name('add.documents');
+        Route::post('/store/documents', 'StoreDocuments')->name('store.documents');
+        Route::get('/edit/documents/{id}', 'EditDocuments')->name('edit.documents');
+        Route::post('/update/documents', 'UpdateDocuments')->name('update.documents');
+        Route::get('/delete/documents/{id}', 'DeleteDocuments')->name('delete.documents');
     });
 });
 

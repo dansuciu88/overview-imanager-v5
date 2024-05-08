@@ -127,10 +127,10 @@
                 <div class="collapse" id="contracts">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">All Contracts</a>
+                            <a href="{{ route('all.contracts') }}" class="nav-link">All Contracts</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Add Contracts</a>
+                            <a href="{{ route('add.contracts') }}" class="nav-link">Add Contracts</a>
                         </li>
                     </ul>
                 </div>
@@ -144,10 +144,10 @@
                 <div class="collapse" id="documents">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">All Reports</a>
+                            <a href="{{ route('all.documents') }}" class="nav-link">All Reports</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Add Report</a>
+                            <a href="{{ route('add.contracts') }}" class="nav-link">Add Report</a>
                         </li>
                     </ul>
                 </div>
