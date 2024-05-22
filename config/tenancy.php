@@ -18,7 +18,6 @@ return [
      */
     'central_domains' => [
         '127.0.0.1',
-        'localhost',
     ],
 
     /**
@@ -39,13 +38,13 @@ return [
      * Database tenancy config. Used by DatabaseTenancyBootstrapper.
      */
     'database' => [
-        'central_connection' => env('DB_CONNECTION', 'central'),
+        'central_connection' => env('DB_CONNECTION', 'my_landlord'),
 
         /**
          * Connection used as a "template" for the dynamically created tenant database connection.
          * Note: don't name your template connection tenant. That name is reserved by package.
          */
-        'template_tenant_connection' => null,
+        'template_tenant_connection' => 'my_tenant',
 
         /**
          * Tenant database names are created like this:
